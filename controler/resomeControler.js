@@ -1,4 +1,5 @@
 const Skill = require("../models/Skill");
+const WorkEx = require("../models/WorkEx");
 
 // add Skill
 async function addSkill(req, res, next) {
@@ -102,4 +103,120 @@ async function deleteSkill(req, res, next) {
   }
 }
 
-module.exports = { addSkill, getSkill, updataSkill, deleteSkill };
+// work exprince add
+async function addWorkEx(req, res, next) {
+  const { name, institute, deurarion, descriptin } = req.body;
+
+  const data = {
+    name,
+    institute,
+    deurarion,
+    descriptin,
+  };
+  try {
+    const result = await WorkEx.insertMany(data);
+
+    res.status(200).json({
+      result,
+    });
+  } catch {
+    res.status(500).json({
+      errors: "There was a problem in server side!",
+    });
+  }
+}
+
+// get work exprience data
+async function getWorkEx(req, res, next) {
+  try {
+    const result = await WorkEx.find();
+    res.status(200).json({
+      result,
+    });
+  } catch {
+    res.status(500).json({
+      errros: "There was a problem in server side!",
+    });
+  }
+}
+
+// work exprince update
+async function updateWorkEx(req, res, next) {
+  let { name, institute, deurarion, descriptin, id } = req.body;
+
+  const data = {
+    name,
+    institute,
+    deurarion,
+    descriptin,
+  };
+  id = typeof id === "string" && id.length >= 12 ? id : null;
+
+  if (id) {
+    try {
+      const fineWork = await WorkEx.findById(id);
+      try {
+        const result = await WorkEx.findByIdAndUpdate(
+          { _id: fineWork._id },
+          data
+        );
+        res.status(200).json({
+          data,
+        });
+      } catch {
+        res.status(500).json({
+          errors: "Work not found!",
+        });
+      }
+    } catch {
+      res.status(500).json({
+        errors: "There was a problem in server side!",
+      });
+    }
+  } else {
+    res.status(400).json({
+      errors: "There was a problem in your request!",
+    });
+  }
+}
+
+// work exprince delete
+async function deleteWorkEx(req, res, next) {
+  let { id } = req.headers;
+  id = typeof id === "string" && id.length >= 12 ? id : null;
+
+  if (id) {
+    try {
+      const fineWork = await WorkEx.findById(id);
+      try {
+        const result = await WorkEx.findByIdAndDelete({ _id: fineWork._id });
+        res.status(200).json({
+          msg: "Work Exprience deleted successfully",
+        });
+      } catch {
+        res.status(500).json({
+          errors: "Work not found!",
+        });
+      }
+    } catch {
+      res.status(500).json({
+        errors: "There was a problem in server side!",
+      });
+    }
+  } else {
+    res.status(400).json({
+      errors: "There was a problem in your request!",
+    });
+  }
+}
+
+module.exports = {
+  addSkill,
+  getSkill,
+  updataSkill,
+  deleteSkill,
+  addWorkEx,
+  getWorkEx,
+  updateWorkEx,
+  deleteWorkEx,
+};
