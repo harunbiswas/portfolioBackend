@@ -4,7 +4,7 @@ const skillValidation = [
   check("name")
     .isLength({ min: 1, max: 20 })
     .withMessage("Name shuld be 1 to 20 charactor!")
-    .isAlpha("en-US", { ignore: " -" })
+    .isAlpha("en-US", { ignore: " -." })
     .withMessage("Name shuld ne alphaber")
     .trim(),
   check("value")
