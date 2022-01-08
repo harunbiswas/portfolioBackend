@@ -18,6 +18,24 @@ const workvalidator = [
     .withMessage("Description is required")
     .trim(),
 ];
+const educationvalidator = [
+  check("name")
+    .isLength({ min: 1, max: 20 })
+    .withMessage("Name shuld be 1 to 20")
+    .trim(),
+  check("company")
+    .isLength({ min: 1 })
+    .withMessage("Company name is required!")
+    .trim(),
+  check("deuration")
+    .isLength({ min: 1 })
+    .withMessage("Deuration is Required!")
+    .trim(),
+  check("description")
+    .isLength({ min: 1 })
+    .withMessage("Description is required")
+    .trim(),
+];
 
 const workvalidationHandler = (req, res, next) => {
   const errors = validationResult(req);
@@ -32,4 +50,4 @@ const workvalidationHandler = (req, res, next) => {
   }
 };
 
-module.exports = { workvalidationHandler, workvalidator };
+module.exports = { workvalidationHandler, workvalidator, educationvalidator };

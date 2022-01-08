@@ -9,6 +9,10 @@ const {
   getWorkEx,
   updateWorkEx,
   deleteWorkEx,
+  addEducationQu,
+  getEducationQu,
+  updateEducationQu,
+  deleteEducationQu,
 } = require("../controler/resomeControler");
 const {
   skillValidation,
@@ -17,6 +21,7 @@ const {
 const {
   workvalidator,
   workvalidationHandler,
+  educationvalidator,
 } = require("../middlewares/work/workvalidator");
 
 const router = express.Router();
@@ -68,5 +73,29 @@ router.put(
 
 // work exprience delete
 router.delete("/work", checkLogin, deleteWorkEx);
+
+// Education Qualification add
+router.post(
+  "/education",
+  checkLogin,
+  educationvalidator,
+  workvalidationHandler,
+  addEducationQu
+);
+
+// Education Qualification  get data
+router.get("/education", checkLogin, getEducationQu);
+
+// Education Qualification  update
+router.put(
+  "/education",
+  //checkLogin,
+  educationvalidator,
+  workvalidationHandler,
+  updateEducationQu
+);
+
+//Education Qualification  delete
+router.delete("/education", deleteEducationQu);
 
 module.exports = router;
