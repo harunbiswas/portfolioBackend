@@ -105,13 +105,13 @@ async function deleteSkill(req, res, next) {
 
 // work exprince add
 async function addWorkEx(req, res, next) {
-  const { name, institute, deurarion, descriptin } = req.body;
+  const { name, institute, deuration, description } = req.body;
 
   const data = {
     name,
     institute,
-    deurarion,
-    descriptin,
+    deuration,
+    description,
   };
   try {
     const result = await WorkEx.insertMany(data);
