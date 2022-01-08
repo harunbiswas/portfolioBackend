@@ -16,6 +16,7 @@ const dashboardRouter = require("./router/dashboardRouter");
 const serviceRouter = require("./router/serviceRouter");
 const reviewRouter = require("./router/reviewRouter");
 const resomeRouter = require("./router/resomeRouter");
+const porfolioRouter = require("./router/portfolioRouter");
 
 // Initialize Express
 const app = express();
@@ -48,6 +49,7 @@ app.use("/dashboard", dashboardRouter);
 app.use("/dashboard/service", serviceRouter);
 app.use("/dashboard/review", reviewRouter);
 app.use("/dashboard/resome", resomeRouter);
+app.use("/dashboard/portfolio", porfolioRouter);
 
 //404(Not found) Error handler
 app.use(notFoundHandler);
