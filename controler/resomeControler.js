@@ -106,11 +106,11 @@ async function deleteSkill(req, res, next) {
 
 // work exprince add
 async function addWorkEx(req, res, next) {
-  const { name, institute, deuration, description } = req.body;
+  const { name, company, deuration, description } = req.body;
 
   const data = {
     name,
-    institute,
+    company,
     deuration,
     description,
   };
@@ -213,11 +213,11 @@ async function deleteWorkEx(req, res, next) {
 
 // Education Qualification add
 async function addEducationQu(req, res, next) {
-  const { name, company, deuration, description } = req.body;
+  const { name, institute, deuration, description } = req.body;
 
   const data = {
     name,
-    company,
+    institute,
     deuration,
     description,
   };
@@ -250,11 +250,11 @@ async function getEducationQu(req, res, next) {
 
 //Education Qualification  update
 async function updateEducationQu(req, res, next) {
-  let { name, company, deuration, description, id } = req.body;
+  let { name, institute, deuration, description, id } = req.body;
 
   const data = {
     name,
-    company,
+    institute,
     deuration,
     description,
   };

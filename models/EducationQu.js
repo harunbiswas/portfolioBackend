@@ -7,7 +7,7 @@ const educationQuSchema = mongoose.Schema(
       require: true,
       trim: true,
     },
-    company: {
+    institute: {
       type: String,
       require: true,
       trim: true,

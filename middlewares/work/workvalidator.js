@@ -5,9 +5,9 @@ const workvalidator = [
     .isLength({ min: 1, max: 20 })
     .withMessage("Name shuld be 1 to 20")
     .trim(),
-  check("institute")
+  check("company")
     .isLength({ min: 1 })
-    .withMessage("Instutute name is required!")
+    .withMessage("Company name is required!")
     .trim(),
   check("deuration")
     .isLength({ min: 1 })
@@ -23,9 +23,9 @@ const educationvalidator = [
     .isLength({ min: 1, max: 20 })
     .withMessage("Name shuld be 1 to 20")
     .trim(),
-  check("company")
+  check("institute")
     .isLength({ min: 1 })
-    .withMessage("Company name is required!")
+    .withMessage("Institute name is required!")
     .trim(),
   check("deuration")
     .isLength({ min: 1 })

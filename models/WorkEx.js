@@ -7,7 +7,7 @@ const workExSchema = mongoose.Schema(
       require: true,
       trim: true,
     },
-    institute: {
+    company: {
       type: String,
       require: true,
       trim: true,
