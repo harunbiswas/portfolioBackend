@@ -143,11 +143,11 @@ async function getWorkEx(req, res, next) {
 
 // work exprince update
 async function updateWorkEx(req, res, next) {
-  let { name, institute, deuration, description, id } = req.body;
+  let { name, company, deuration, description, id } = req.body;
 
   const data = {
     name,
-    institute,
+    company,
     deuration,
     description,
   };
